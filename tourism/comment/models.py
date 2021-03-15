@@ -12,7 +12,7 @@ class Comment(models.Model):
         null=True,
         blank=True
     )
-    approved = models.BooleanField('aprovado', default=False)
+    approved = models.BooleanField('aprovado', default=True)
     created = models.DateTimeField(
         'criado em',
         auto_now_add=True,
