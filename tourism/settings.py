@@ -41,6 +41,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django_extensions',
     'tourism.core',
+    'tourism.attraction',
+    'tourism.comment',
+    'tourism.ratting',
+    'tourism.address',
 ]
 
 MIDDLEWARE = [
