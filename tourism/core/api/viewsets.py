@@ -17,19 +17,22 @@ class TouristSpotViewSet(ModelViewSet):
         # Return only approved TouristSpot.
         return TouristSpot.objects.filter(approved=True)
 
-    def list(self, request, *args, **kwargs):
-        queryset = self.get_queryset()
-        serializer = self.get_serializer(queryset, many=True)
-        return Response(serializer.data)
+    # def list(self, request, *args, **kwargs):
+    #     queryset = self.get_queryset()
+    #     serializer = self.get_serializer(queryset, many=True)
+    #     return Response(serializer.data)
 
-    def create(self, request, *args, **kwargs):
-        try:
-            return super().create(request, *args, **kwargs)
-        except IntegrityError as e:
-            return Response(
-                data={
-                    'error': 'Já existe, tente usar o método PUT',
-                    'detail': f'{e}'
-                },
-                status=status.HTTP_500_INTERNAL_SERVER_ERROR
-            )
+    # def create(self, request, *args, **kwargs):
+    #     try:
+    #         return super().create(request, *args, **kwargs)
+    #     except IntegrityError as e:
+    #         return Response(
+    #             data={
+    #                 'error': 'Já existe, tente usar o método PUT',
+    #                 'detail': f'{e}'
+    #             },
+    #             status=status.HTTP_500_INTERNAL_SERVER_ERROR
+    #         )
+
+    # def create(self, validated_data):
+    #     pass
