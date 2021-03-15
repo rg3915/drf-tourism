@@ -9,7 +9,7 @@ from tourism.ratting.api.viewsets import RattingViewSet
 
 
 router = routers.DefaultRouter()
-router.register(r'tourists-spots', TouristSpotViewSet)
+router.register(r'tourists-spots', TouristSpotViewSet, basename='tourist_spot')
 router.register(r'attractions', AttractionViewSet)
 router.register(r'adresses', AddressViewSet)
 router.register(r'comments', CommentViewSet)
