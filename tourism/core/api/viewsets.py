@@ -6,6 +6,14 @@ from tourism.core.models import TouristSpot
 from .serializers import TouristSpotSerializer
 
 
+def update_instance_from_dict(instance, attrs, save=False):
+    for attr, val in attrs.items():
+        setattr(instance, attr, val)
+    if save:
+        instance.save()
+    return instance
+
+
 class TouristSpotViewSet(ModelViewSet):
     """
     A simple ViewSet for viewing and editing accounts.
@@ -44,3 +52,8 @@ class TouristSpotViewSet(ModelViewSet):
     #                         status=status.HTTP_403_FORBIDDEN)
     #     self.perform_destroy(instance)
     #     return Response(status=status.HTTP_204_NO_CONTENT)
+
+    # def update(self, instance, validated_data):
+    #     update_instance_from_dict(instance, validated_data)
+    #     instance.save()
+    #     return instance
