@@ -35,4 +35,7 @@ class TouristSpotViewSet(ModelViewSet):
     #         )
 
     # def create(self, validated_data):
-    #     pass
+    #     ...
+
+    # def destroy(self, request, *args, **kwargs):
+    #     ...
