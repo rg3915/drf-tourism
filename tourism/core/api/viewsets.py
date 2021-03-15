@@ -22,9 +22,26 @@ class TouristSpotViewSet(ModelViewSet):
     # queryset = TouristSpot.objects.all()
     serializer_class = TouristSpotSerializer
 
+    # def get_queryset(self):
+    #     # Return only approved TouristSpot.
+    #     return TouristSpot.objects.filter(approved=True)
+
     def get_queryset(self):
-        # Return only approved TouristSpot.
-        return TouristSpot.objects.filter(approved=True)
+        id = self.request.query_params.get('id', None)
+        name = self.request.query_params.get('name', None)
+        description = self.request.query_params.get('description', None)
+        queryset = TouristSpot.objects.all()
+
+        if id:
+            queryset = TouristSpot.objects.filter(pk=id)
+
+        if name:
+            queryset = queryset.filter(name__icontains=name)
+
+        if description:
+            queryset = queryset.filter(description__icontains=description)
+
+        return queryset
 
     # def list(self, request, *args, **kwargs):
     #     queryset = self.get_queryset()
