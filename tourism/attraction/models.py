@@ -6,6 +6,7 @@ class Attraction(models.Model):
     description = models.TextField('descrição', null=True, blank=True)
     opening_hours = models.TextField('funcionamento', null=True, blank=True)
     min_age = models.PositiveIntegerField('idade mínima')
+    photo = models.ImageField(upload_to='attractions', null=True, blank=True)
 
     class Meta:
         ordering = ('name',)

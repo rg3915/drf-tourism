@@ -46,6 +46,9 @@ class TouristSpotViewSet(ModelViewSet):
     # def create(self, validated_data):
     #     ...
 
+    def create(self, request, *args, **kwargs):
+        return super(TouristSpotViewSet, self).create(request, *args, **kwargs)
+
     # def destroy(self, request, *args, **kwargs):
     #     instance = self.get_object()
     #     if not instance.can_delete():

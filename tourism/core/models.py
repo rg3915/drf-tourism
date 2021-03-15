@@ -32,6 +32,7 @@ class TouristSpot(models.Model):
         null=True,
         blank=True
     )
+    photo = models.ImageField(upload_to='tourist_spot', null=True, blank=True)
 
     class Meta:
         ordering = ('name',)

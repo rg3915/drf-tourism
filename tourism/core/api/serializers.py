@@ -6,4 +6,4 @@ class TouristSpotSerializer(ModelSerializer):
 
     class Meta:
         model = TouristSpot
-        fields = ('id', 'name', 'description', 'approved')
+        fields = ('id', 'name', 'description', 'approved', 'photo')
