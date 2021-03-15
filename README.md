@@ -53,3 +53,13 @@ pip install -r requirements.txt
 python contrib/env_gen.py
 python manage.py migrate
 ```
+
+### graph models
+
+https://gist.github.com/rg3915/35e999a442a8955e455b
+
+```
+python manage.py graph_models -e -g -l dot -o models.png core attraction comment ratting address
+```
+
+![models.png](models.png)
