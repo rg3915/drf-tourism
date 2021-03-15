@@ -1,5 +1,6 @@
 from django.db import IntegrityError
 from rest_framework import status
+from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from tourism.core.models import TouristSpot
@@ -57,3 +58,7 @@ class TouristSpotViewSet(ModelViewSet):
     #     update_instance_from_dict(instance, validated_data)
     #     instance.save()
     #     return instance
+
+    @action(methods=['get'], detail=True)
+    def denounce(self, request, pk=None):
+        return Response({'pk': pk})
