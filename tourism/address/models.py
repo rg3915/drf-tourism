@@ -38,6 +38,8 @@ class Address(models.Model):
         null=True,
         blank=True
     )
+    latitude = models.DecimalField(max_digits=8, decimal_places=6, null=True, blank=True)
+    longitude = models.DecimalField(max_digits=8, decimal_places=6, null=True, blank=True)
 
     class Meta:
         ordering = ('address',)
