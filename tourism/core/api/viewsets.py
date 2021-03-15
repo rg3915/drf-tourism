@@ -1,3 +1,5 @@
+from django.db import IntegrityError
+from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from tourism.core.models import TouristSpot
@@ -16,7 +18,18 @@ class TouristSpotViewSet(ModelViewSet):
         return TouristSpot.objects.filter(approved=True)
 
     def list(self, request, *args, **kwargs):
-        # Você pode sobrescrever o método list.
         queryset = self.get_queryset()
         serializer = self.get_serializer(queryset, many=True)
         return Response(serializer.data)
+
+    def create(self, request, *args, **kwargs):
+        try:
+            return super().create(request, *args, **kwargs)
+        except IntegrityError as e:
+            return Response(
+                data={
+                    'error': 'Já existe, tente usar o método PUT',
+                    'detail': f'{e}'
+                },
+                status=status.HTTP_500_INTERNAL_SERVER_ERROR
+            )
