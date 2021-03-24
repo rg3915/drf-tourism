@@ -1,6 +1,7 @@
 from django.db import IntegrityError
 from rest_framework import status
 from rest_framework.decorators import action
+from rest_framework.filters import SearchFilter
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
@@ -23,6 +24,8 @@ class TouristSpotViewSet(ModelViewSet):
     """
     # queryset = TouristSpot.objects.all()
     serializer_class = TouristSpotSerializer
+    filter_backends = (SearchFilter,)
+    search_fields = ('name', 'description', 'address__address', 'address__city')
 
     # def get_queryset(self):
     #     # Return only approved TouristSpot.
