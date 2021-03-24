@@ -42,3 +42,7 @@ class TouristSpot(models.Model):
 
     def __str__(self):
         return self.name
+
+    @property
+    def complete_description(self):
+        return f'{self.name} - {self.description}'
