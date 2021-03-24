@@ -27,12 +27,13 @@ class TouristSpotViewSet(ModelViewSet):
     # queryset = TouristSpot.objects.all()
     serializer_class = TouristSpotSerializer
 
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     # DjangoModelPermissions
     # https://www.django-rest-framework.org/api-guide/permissions/#djangomodelpermissions
     # Você precisa dar as permissões para o usuário no painel de Admin.
 
-    authentication_classes = (TokenAuthentication,)
+    # authentication_classes = (TokenAuthentication,)
+
     filter_backends = (SearchFilter,)
     search_fields = ('name', 'description', 'address__address', 'address__city')
     # O lookup_field default é o id. E o novo lookup_field deve ser unique=True.
