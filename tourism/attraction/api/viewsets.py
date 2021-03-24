@@ -1,7 +1,9 @@
-from rest_framework.viewsets import ModelViewSet
-from tourism.attraction.models import Attraction
-from .serializers import AttractionSerializer
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.viewsets import ModelViewSet
+
+from tourism.attraction.models import Attraction
+
+from .serializers import AttractionSerializer
 
 
 class AttractionViewSet(ModelViewSet):

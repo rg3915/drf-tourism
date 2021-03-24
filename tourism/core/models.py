@@ -1,8 +1,9 @@
 from django.db import models
+
+from tourism.address.models import Address
 from tourism.attraction.models import Attraction
 from tourism.comment.models import Comment
 from tourism.ratting.models import Ratting
-from tourism.address.models import Address
 
 
 class TouristSpot(models.Model):

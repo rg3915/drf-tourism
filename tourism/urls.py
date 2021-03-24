@@ -1,15 +1,14 @@
-from django.urls import include, path
-from django.contrib import admin
-from rest_framework import routers
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib import admin
+from django.urls import include, path
+from rest_framework import routers
 
-from tourism.core.api.viewsets import TouristSpotViewSet
-from tourism.attraction.api.viewsets import AttractionViewSet
 from tourism.address.api.viewsets import AddressViewSet
+from tourism.attraction.api.viewsets import AttractionViewSet
 from tourism.comment.api.viewsets import CommentViewSet
+from tourism.core.api.viewsets import TouristSpotViewSet
 from tourism.ratting.api.viewsets import RattingViewSet
-
 
 router = routers.DefaultRouter()
 router.register(r'tourists-spots', TouristSpotViewSet, basename='tourist_spot')

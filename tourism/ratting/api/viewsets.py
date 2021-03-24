@@ -1,5 +1,7 @@
 from rest_framework.viewsets import ModelViewSet
+
 from tourism.ratting.models import Ratting
+
 from .serializers import RattingSerializer
 
 
