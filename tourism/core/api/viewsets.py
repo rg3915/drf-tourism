@@ -26,6 +26,8 @@ class TouristSpotViewSet(ModelViewSet):
     serializer_class = TouristSpotSerializer
     filter_backends = (SearchFilter,)
     search_fields = ('name', 'description', 'address__address', 'address__city')
+    # O lookup_field default é o id. E o novo lookup_field deve ser unique=True.
+    # lookup_field = 'nome'
 
     # def get_queryset(self):
     #     # Return only approved TouristSpot.
