@@ -84,3 +84,45 @@ python manage.py graph_models -e -g -l dot -o models.png core attraction comment
 ```
 
 ![models.png](models.png)
+
+### Exemplos
+
+
+```
+{
+    "name": "Circo",
+    "description": "Circo da Alegria",
+    "approved": true,
+    "attractions": [
+        {
+            "name": "Leão",
+            "min_age": "3"
+        },
+        {
+            "name": "Palhaço",
+            "min_age": "2"
+        }
+    ]
+}
+```
+
+```
+{
+    "name": "Parque de diversões",
+    "description": "Super legal",
+    "approved": true,
+    "attractions": [
+        {
+            "name": "Carrossel",
+            "min_age": "4"
+        },
+        {
+            "name": "Montanha Russa",
+            "min_age": "6"
+        }
+    ],
+    "address": {
+        "address": "Rodovia"
+    }
+}
+```
