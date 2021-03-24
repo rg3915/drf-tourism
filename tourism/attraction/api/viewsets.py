@@ -6,3 +6,4 @@ from .serializers import AttractionSerializer
 class AttractionViewSet(ModelViewSet):
     queryset = Attraction.objects.all()
     serializer_class = AttractionSerializer
+    filter_fields = ('name', 'description')

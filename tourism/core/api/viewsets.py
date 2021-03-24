@@ -33,7 +33,7 @@ class TouristSpotViewSet(ModelViewSet):
         queryset = TouristSpot.objects.all()
 
         if id:
-            queryset = TouristSpot.objects.filter(pk=id)
+            queryset = queryset.filter(pk=id)
 
         if name:
             queryset = queryset.filter(name__icontains=name)
