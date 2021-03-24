@@ -1,7 +1,9 @@
 from django.db import IntegrityError
 from rest_framework import status
+from rest_framework.authentication import TokenAuthentication
 from rest_framework.decorators import action
 from rest_framework.filters import SearchFilter
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
@@ -24,6 +26,8 @@ class TouristSpotViewSet(ModelViewSet):
     """
     # queryset = TouristSpot.objects.all()
     serializer_class = TouristSpotSerializer
+    permission_classes = (IsAuthenticated,)
+    authentication_classes = (TokenAuthentication,)
     filter_backends = (SearchFilter,)
     search_fields = ('name', 'description', 'address__address', 'address__city')
     # O lookup_field default é o id. E o novo lookup_field deve ser unique=True.
