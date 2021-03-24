@@ -16,6 +16,7 @@ Curso de DRF - tema Turismo
 * Active the virtualenv.
 * Install dependences.
 * Run the migrations.
+* Create a token.
 
 
 ```
@@ -26,6 +27,8 @@ source .venv/bin/activate
 pip install -r requirements.txt
 python contrib/env_gen.py
 python manage.py migrate
+python manage.py createsuperuser --username="admin" --email=""
+python manage.py drf_create_token admin
 ```
 
 
@@ -42,6 +45,7 @@ python manage.py migrate
 * Ative o virtualenv.
 * Instale as dependências.
 * Rode as migrações.
+* Crie um token.
 
 
 ```
@@ -52,7 +56,24 @@ source .venv/bin/activate
 pip install -r requirements.txt
 python contrib/env_gen.py
 python manage.py migrate
+python manage.py createsuperuser --username="admin" --email=""
+python manage.py drf_create_token admin
 ```
+
+
+### Obter um token
+
+No Postman, entre no endpoint
+
+```
+http://localhost:8000/api-token-auth/
+```
+
+E faça um POST com
+
+`Body > form-data` informando `username` e `password`.
+
+
 
 ### graph models
 
