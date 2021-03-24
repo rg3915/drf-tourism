@@ -1,6 +1,12 @@
 from django.contrib import admin
 
-from .models import TouristSpot
+from .models import Document, TouristSpot
+
+
+@admin.register(Document)
+class DocumentAdmin(admin.ModelAdmin):
+    list_display = ('__str__',)
+    search_fields = ('description',)
 
 
 @admin.register(TouristSpot)

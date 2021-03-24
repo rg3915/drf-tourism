@@ -5,7 +5,17 @@ from tourism.address.api.serializers import AddressSerializer
 from tourism.address.models import Address
 from tourism.attraction.api.serializers import AttractionSerializer
 from tourism.attraction.models import Attraction
-from tourism.core.models import TouristSpot
+from tourism.core.models import Document, TouristSpot
+
+
+class DocumentSerializer(ModelSerializer):
+
+    class Meta:
+        model = Document
+        fields = (
+            'id',
+            'description',
+        )
 
 
 class TouristSpotSerializer(ModelSerializer):
@@ -14,6 +24,7 @@ class TouristSpotSerializer(ModelSerializer):
     # address = AddressSerializer(read_only=True)
     address = AddressSerializer()
     full_description = SerializerMethodField()
+    document = DocumentSerializer()
 
     class Meta:
         model = TouristSpot
@@ -25,6 +36,7 @@ class TouristSpotSerializer(ModelSerializer):
             'complete_description',
             'approved',
             'photo',
+            'document',
             'attractions',
             'comments',
             'rattings',
@@ -40,12 +52,16 @@ class TouristSpotSerializer(ModelSerializer):
     def create(self, validated_data):
         attractions = validated_data.pop('attractions')
         address = validated_data.pop('address')
+        document = validated_data.pop('document')
+
+        document_obj = Document.objects.create(**document)
 
         tourist_spot = TouristSpot.objects.create(**validated_data)
         self.create_attractions(attractions, tourist_spot)
 
         address_obj = Address.objects.create(**address)
         tourist_spot.address = address_obj
+        tourist_spot.document = document_obj
         tourist_spot.save()
 
         return tourist_spot

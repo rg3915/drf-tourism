@@ -6,6 +6,18 @@ from tourism.comment.models import Comment
 from tourism.ratting.models import Ratting
 
 
+class Document(models.Model):
+    description = models.CharField('descrição', max_length=50, unique=True)
+
+    class Meta:
+        ordering = ('description',)
+        verbose_name = 'documento'
+        verbose_name_plural = 'documentos'
+
+    def __str__(self):
+        return self.description
+
+
 class TouristSpot(models.Model):
     name = models.CharField('nome', max_length=100, unique=True)
     description = models.TextField('descrição', null=True, blank=True)
@@ -34,6 +46,14 @@ class TouristSpot(models.Model):
         blank=True
     )
     photo = models.ImageField(upload_to='tourist_spot', null=True, blank=True)
+    document = models.OneToOneField(
+        Document,
+        on_delete=models.CASCADE,
+        verbose_name='documento',
+        related_name='documents',
+        null=True,
+        blank=True
+    )
 
     class Meta:
         ordering = ('name',)
