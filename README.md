@@ -126,3 +126,13 @@ python manage.py graph_models -e -g -l dot -o models.png core attraction comment
     }
 }
 ```
+
+/tourists-spots/<pk>/associated_attractions/
+
+
+```
+{
+    "ids": [1, 2, 3]
+}
+```
+

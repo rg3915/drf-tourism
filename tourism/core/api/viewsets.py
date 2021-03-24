@@ -99,3 +99,12 @@ class TouristSpotViewSet(ModelViewSet):
     @action(methods=['get'], detail=True)
     def denounce(self, request, pk=None):
         return Response({'pk': pk})
+
+    @action(methods=['post'], detail=True)
+    def associated_attractions(self, request, pk):
+        attractions = request.data['ids']
+        tourist_spot = TouristSpot.objects.get(pk=pk)
+        tourist_spot.attractions.set(attractions)
+        tourist_spot.save()
+        serializer = self.get_serializer(tourist_spot)
+        return Response(serializer.data)
