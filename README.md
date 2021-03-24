@@ -123,6 +123,9 @@ python manage.py graph_models -e -g -l dot -o models.png core attraction comment
     ],
     "address": {
         "address": "Rodovia"
+    },
+    "document": {
+        "description": "my document"
     }
 }
 ```
